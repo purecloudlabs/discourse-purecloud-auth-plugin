@@ -1,2 +1,3 @@
-# discourse-purecloud-auth-plugin
-A plugin for Discourse forums to authenticate using PureCloud
+# Discourse PureCloud Auth Plugin
+
+This is a plugin for Discourse to provide authentication via PureCloud.

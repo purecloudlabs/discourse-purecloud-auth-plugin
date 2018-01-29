@@ -1,0 +1,10 @@
+en:
+  site_settings:
+    purecloud_client_id: "[NA] OAuth Client ID"
+    purecloud_client_secret: "[NA] OAuth Client Secret"
+    purecloud_apse_client_id: "[JP] OAuth Client ID"
+    purecloud_apse_client_secret: "[JP] OAuth Client Secret"
+    purecloud_apne_client_id: "[AU] OAuth Client ID"
+    purecloud_apne_client_secret: "[AU] OAuth Client Secret"
+    purecloud_euw_client_id: "[EU] OAuth Client ID"
+    purecloud_euw_client_secret: "[EU] OAuth Client Secret"

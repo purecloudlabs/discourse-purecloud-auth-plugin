@@ -1,4 +1,4 @@
-plugins:
+purecloud_auth:
   purecloud_client_id:
       default: ''
   purecloud_client_secret:

@@ -4,31 +4,29 @@ GENESYS_PROD_ORG_ID = "845c9858-a978-4313-b8ed-2a85b289cffb"
 
 #https://github.com/discourse/discourse-oauth2-basic
 class PureCloudAuthenticator < ::Auth::OAuth2Authenticator
-  @client_id = ""
-  @client_secret = ""
   @provider_name = "purecloud"
   @region = "mypurecloud.com"
 
   def init_settings
-      puts "Registering PC Auth settings"
-      puts "ID: " + SiteSetting.purecloud_client_id
-      @client_id = SiteSetting.purecloud_client_id
-      @client_secret = SiteSetting.purecloud_client_secret
       @region = "mypurecloud.com"
       @provider_name = "purecloud"
-
-      puts "Client ID: #{@client_id}"
+      puts "Initializing PureCloud OAuth settings"
+      puts "Provider: " + @provider_name
+      puts "Region: " + @region
   end
 
   def register_middleware(omniauth)
+    @region = "mypurecloud.com"
+    @provider_name = "purecloud"
     omniauth.provider :purecloud,
                       name: @provider_name,
                       setup: lambda {|env|
-                      	init_settings
-                      	
+                      	puts "Registering middleware for PureCloud OAuth provider: " + @provider_name
+                      	puts "Client ID: " + SiteSetting.purecloud_client_id
+
                         opts = env['omniauth.strategy'].options
-                        opts[:client_id] = @client_id
-                        opts[:client_secret] = @client_secret
+                        opts[:client_id] = SiteSetting.purecloud_client_id
+                        opts[:client_secret] = SiteSetting.purecloud_client_secret
 
                         opts[:client_options] = {
                           site: "https://login.#{@region}/"

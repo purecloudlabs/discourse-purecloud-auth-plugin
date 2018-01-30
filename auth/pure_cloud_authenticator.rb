@@ -17,7 +17,7 @@ class PureCloudAuthenticator < ::Auth::OAuth2Authenticator
 
   def register_middleware(omniauth)
   	init_settings
-  	
+
     omniauth.provider :purecloud,
                       name: @provider_name,
                       setup: lambda {|env|
@@ -51,47 +51,52 @@ class PureCloudAuthenticator < ::Auth::OAuth2Authenticator
   end
 
   def after_authenticate(auth)
-    result = Auth::Result.new
-    token = auth['credentials']['token']
-    user_details = fetch_user_details(token)
+	  result = Auth::Result.new
+  	
+  	begin
+	    token = auth['credentials']['token']
+	    user_details = fetch_user_details(token)
 
-    result.name = user_details[:name]
-    result.username = user_details[:username]
-    result.email = user_details[:email]
+	    result.name = user_details[:name]
+	    result.username = user_details[:username]
+	    result.email = user_details[:email]
 
-    #purecloud doesn't have a concept of a validated email
-    result.email_valid = false
+	    #purecloud doesn't have a concept of a validated email
+	    result.email_valid = false
 
-    current_info = ::PluginStore.get(@provider_name, "#{@provider_name}_user_#{user_details[:user_id]}")
-    if current_info
-      result.user = User.where(id: current_info[:user_id]).first
-    end
+	    current_info = ::PluginStore.get(@provider_name, "#{@provider_name}_user_#{user_details[:user_id]}")
+	    if current_info
+	      result.user = User.where(id: current_info[:user_id]).first
+	    end
 
-    result.extra_data = {
+	    result.extra_data = {
         purecloud_user_id: user_details[:user_id],
         purecloud_org_id: user_details[:org_id]
-    }
+	    }
 
-####### BEGIN EMPLOYEE SYNC
-    #Special logic for the prod genesys org
-    if(result.extra_data[:purecloud_org_id] == GENESYS_PROD_ORG_ID)
+			####### BEGIN EMPLOYEE SYNC
+	    #Special logic for the prod genesys org
+	    if(result.extra_data[:purecloud_org_id] == GENESYS_PROD_ORG_ID)
         if result.user == nil
-            puts 'PURECLOUD - looking for user with this email'
-            result.user = User.where(email: Email.downcase(result.email)).first
+          puts 'PURECLOUD - looking for user with this email'
+          result.user = User.where(email: Email.downcase(result.email)).first
         end
 
         if result.user == nil
-            puts 'PURECLOUD - looking for user with their ININ email'
-            result.user = User.where(email: Email.downcase(result.email.sub(/@genesys.com/, "@inin.com"))).first
+          puts 'PURECLOUD - looking for user with their ININ email'
+          result.user = User.where(email: Email.downcase(result.email.sub(/@genesys.com/, "@inin.com"))).first
         end
 
         result.email_valid = true
-    end
+	    end
+			####### END EMPLOYEE SYNC
+	  rescue => e
+	  	puts "Exception Class: #{ e.class.name }"
+		  puts "Exception Message: #{ e.message }"
+		  puts "Exception Backtrace: #{ e.backtrace }"
+	  end
 
-
-####### END EMPLOYEE SYNC
-
-    result
+	  result
   end
 
   def after_create_account(user, auth)

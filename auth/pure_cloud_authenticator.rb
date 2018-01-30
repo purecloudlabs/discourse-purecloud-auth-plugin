@@ -16,8 +16,6 @@ class PureCloudAuthenticator < ::Auth::OAuth2Authenticator
   end
 
   def register_middleware(omniauth)
-    @region = "mypurecloud.com"
-    @provider_name = "purecloud"
     omniauth.provider :purecloud,
                       name: @provider_name,
                       setup: lambda {|env|

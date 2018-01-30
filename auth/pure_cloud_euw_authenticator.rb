@@ -11,6 +11,8 @@ class PureCloudEuwAuthenticator < PureCloudAuthenticator
   end
 
   def register_middleware(omniauth)
+  	init_settings
+  	
     omniauth.provider :purecloud,
                       name: @provider_name,
                       setup: lambda {|env|

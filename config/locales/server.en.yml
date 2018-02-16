@@ -8,3 +8,5 @@ en:
     purecloud_apne_client_secret: "[APNE] OAuth Client Secret"
     purecloud_euw_client_id: "[EUW] OAuth Client ID"
     purecloud_euw_client_secret: "[EUW] OAuth Client Secret"
+    purecloud_euc1_client_id: "[EUC1] OAuth Client ID"
+    purecloud_euc1_client_secret: "[EUC1] OAuth Client Secret"

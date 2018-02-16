@@ -6,6 +6,7 @@ require_relative 'auth/pure_cloud_authenticator'
 require_relative 'auth/pure_cloud_apne_authenticator'
 require_relative 'auth/pure_cloud_apse_authenticator'
 require_relative 'auth/pure_cloud_euw_authenticator'
+require_relative 'auth/pure_cloud_euc1_authenticator'
 
 require_relative 'omniauth-purecloud'
 
@@ -24,8 +25,14 @@ auth_provider :title => 'Sign in with PureCloud Americas (mypurecloud.com)',
             :frame_width => FRAME_WIDTH,
             :frame_height => FRAME_HEIGHT
 
-auth_provider :title => 'Sign in with PureCloud Europe (mypurecloud.ie)',
+auth_provider :title => 'Sign in with PureCloud Europe West (mypurecloud.ie)',
             :authenticator => PureCloudEuwAuthenticator.new('purecloud_euw'),
+            :message => LOGIN_MESSAGE,
+            :frame_width => FRAME_WIDTH,
+            :frame_height => FRAME_HEIGHT
+
+auth_provider :title => 'Sign in with PureCloud Europe Central (mypurecloud.de)',
+            :authenticator => PureCloudEuwAuthenticator.new('purecloud_euc1'),
             :message => LOGIN_MESSAGE,
             :frame_width => FRAME_WIDTH,
             :frame_height => FRAME_HEIGHT

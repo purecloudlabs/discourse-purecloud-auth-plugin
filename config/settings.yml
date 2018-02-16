@@ -15,4 +15,8 @@ purecloud_auth:
       default: ''
   purecloud_euw_client_secret:
       default: ''
+  purecloud_euc1_client_id:
+      default: ''
+  purecloud_euc1_client_secret:
+      default: ''
  

@@ -42,8 +42,4 @@ auth_provider :title => 'Sign in with PureCloud APAC South (mypurecloud.com.au)'
             :frame_width => FRAME_WIDTH,
             :frame_height => FRAME_HEIGHT
 
-puts 'PureCloud - registering assets'
-
-register_asset "javascripts/purecloud.js", :server_side
-
 puts 'PureCloud - plugin startup complete'

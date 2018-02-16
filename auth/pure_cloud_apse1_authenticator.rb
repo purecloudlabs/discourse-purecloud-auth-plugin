@@ -1,10 +1,10 @@
 require_dependency 'auth/oauth2_authenticator.rb'
 
 #https://github.com/discourse/discourse-oauth2-basic
-class PureCloudEuwAuthenticator < PureCloudAuthenticator
+class PureCloudApse1Authenticator < PureCloudAuthenticator
   def init_settings
-      @region = "mypurecloud.ie"
-      @provider_name = "purecloud_euw"
+      @region = "mypurecloud.com.au"
+      @provider_name = "purecloud_apse1"
       puts "Initializing PureCloud OAuth settings"
       puts "Provider: " + @provider_name
       puts "Region: " + @region
@@ -17,11 +17,11 @@ class PureCloudEuwAuthenticator < PureCloudAuthenticator
                       name: @provider_name,
                       setup: lambda {|env|
                       	puts "Registering middleware for PureCloud OAuth provider: " + @provider_name
-                      	puts "Client ID: " + SiteSetting.purecloud_euw_client_id
+                      	puts "Client ID: " + SiteSetting.purecloud_apse1_client_id
 
                         opts = env['omniauth.strategy'].options
-                        opts[:client_id] = SiteSetting.purecloud_euw_client_id
-                        opts[:client_secret] = SiteSetting.purecloud_euw_client_secret
+                        opts[:client_id] = SiteSetting.purecloud_apse1_client_id
+                        opts[:client_secret] = SiteSetting.purecloud_apse1_client_secret
 
                         opts[:client_options] = {
                           site: "https://login.#{@region}/"

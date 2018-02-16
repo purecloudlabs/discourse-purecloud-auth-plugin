@@ -3,9 +3,9 @@
 # version: 0.1
 # authors: Kevin Glinski
 require_relative 'auth/pure_cloud_authenticator'
-require_relative 'auth/pure_cloud_apne_authenticator'
-require_relative 'auth/pure_cloud_apse_authenticator'
-require_relative 'auth/pure_cloud_euw_authenticator'
+require_relative 'auth/pure_cloud_apne1_authenticator'
+require_relative 'auth/pure_cloud_apse1_authenticator'
+require_relative 'auth/pure_cloud_euw1_authenticator'
 require_relative 'auth/pure_cloud_euc1_authenticator'
 
 require_relative 'omniauth-purecloud'
@@ -20,31 +20,31 @@ LOGIN_MESSAGE = 'Authorizing with PureCloud (make sure pop up blockers are not e
 puts 'PureCloud - Registering AuthProviders'
 
 auth_provider :title => 'Sign in with PureCloud Americas (mypurecloud.com)',
-            :authenticator => PureCloudAuthenticator.new('purecloud'),
+            :authenticator => PureCloudAuthenticator.new('purecloud_use1'),
             :message => LOGIN_MESSAGE,
             :frame_width => FRAME_WIDTH,
             :frame_height => FRAME_HEIGHT
 
 auth_provider :title => 'Sign in with PureCloud Europe West (mypurecloud.ie)',
-            :authenticator => PureCloudEuwAuthenticator.new('purecloud_euw'),
+            :authenticator => PureCloudEuw1Authenticator.new('purecloud_euw1'),
             :message => LOGIN_MESSAGE,
             :frame_width => FRAME_WIDTH,
             :frame_height => FRAME_HEIGHT
 
 auth_provider :title => 'Sign in with PureCloud Europe Central (mypurecloud.de)',
-            :authenticator => PureCloudEuwAuthenticator.new('purecloud_euc1'),
+            :authenticator => PureCloudEuc1Authenticator.new('purecloud_euc1'),
             :message => LOGIN_MESSAGE,
             :frame_width => FRAME_WIDTH,
             :frame_height => FRAME_HEIGHT
 
 auth_provider :title => 'Sign in with PureCloud APAC North (mypurecloud.jp)',
-            :authenticator => PureCloudApneAuthenticator.new('purecloud_apne'),
+            :authenticator => PureCloudApne1Authenticator.new('purecloud_apne1'),
             :message => LOGIN_MESSAGE,
             :frame_width => FRAME_WIDTH,
             :frame_height => FRAME_HEIGHT
 
 auth_provider :title => 'Sign in with PureCloud APAC South (mypurecloud.com.au)',
-            :authenticator => PureCloudApseAuthenticator.new('purecloud_apse'),
+            :authenticator => PureCloudApse1Authenticator.new('purecloud_apse1'),
             :message => LOGIN_MESSAGE,
             :frame_width => FRAME_WIDTH,
             :frame_height => FRAME_HEIGHT

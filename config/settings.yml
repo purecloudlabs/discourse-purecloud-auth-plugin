@@ -1,19 +1,19 @@
 purecloud_auth:
-  purecloud_client_id:
+  purecloud_use1_client_id:
       default: ''
-  purecloud_client_secret:
+  purecloud_use1_client_secret:
       default: ''
-  purecloud_apse_client_id:
+  purecloud_apse1_client_id:
       default: ''
-  purecloud_apse_client_secret:
+  purecloud_apse1_client_secret:
       default: ''
-  purecloud_apne_client_id:
+  purecloud_apne1_client_id:
       default: ''
-  purecloud_apne_client_secret:
+  purecloud_apne1_client_secret:
       default: ''
-  purecloud_euw_client_id:
+  purecloud_euw1_client_id:
       default: ''
-  purecloud_euw_client_secret:
+  purecloud_euw1_client_secret:
       default: ''
   purecloud_euc1_client_id:
       default: ''

@@ -31,11 +31,11 @@ auth_provider :title => 'Sign in with PureCloud Europe West (mypurecloud.ie)',
             :frame_width => FRAME_WIDTH,
             :frame_height => FRAME_HEIGHT
 
-auth_provider :title => 'Sign in with PureCloud Europe Central (mypurecloud.de)',
-            :authenticator => PureCloudEuc1Authenticator.new('purecloud_euc1'),
-            :message => LOGIN_MESSAGE,
-            :frame_width => FRAME_WIDTH,
-            :frame_height => FRAME_HEIGHT
+# auth_provider :title => 'Sign in with PureCloud Europe Central (mypurecloud.de)',
+#             :authenticator => PureCloudEuc1Authenticator.new('purecloud_euc1'),
+#             :message => LOGIN_MESSAGE,
+#             :frame_width => FRAME_WIDTH,
+#             :frame_height => FRAME_HEIGHT
 
 auth_provider :title => 'Sign in with PureCloud APAC North (mypurecloud.jp)',
             :authenticator => PureCloudApne1Authenticator.new('purecloud_apne1'),

@@ -9,7 +9,7 @@ class PureCloudAuthenticator < ::Auth::OAuth2Authenticator
 
   def init_settings
       @region = "mypurecloud.com"
-      @provider_name = "purecloud"
+      @provider_name = "purecloud_use1"
       puts "Initializing PureCloud OAuth settings"
       puts "Provider: " + @provider_name
       puts "Region: " + @region

@@ -77,17 +77,14 @@ class PureCloudAuthenticator < ::Auth::OAuth2Authenticator
 			####### BEGIN EMPLOYEE SYNC
 	    #Special logic for the prod genesys org
 	    if(result.extra_data[:purecloud_org_id] == GENESYS_PROD_ORG_ID)
-        if result.user == nil
-          puts 'PURECLOUD - looking for user with this email'
-          result.user = User.where(email: Email.downcase(result.email)).first
-        end
+	    	email_token = ActiveRecord::Base.exec_sql("SELECT * FROM email_tokens WHERE email='" + result.email.downcase + "' ORDER BY id DESC LIMIT 1")
+	    	if email_token.present
+	    		result.user = User.where(id: email_token[0].id).first
+	    	end
 
-        if result.user == nil
-          puts 'PURECLOUD - looking for user with their ININ email'
-          result.user = User.where(email: Email.downcase(result.email.sub(/@genesys.com/, "@inin.com"))).first
-        end
-
-        result.email_valid = true
+	    	if result.user != nil
+	    		result.email_valid = true
+	    	end
 	    end
 			####### END EMPLOYEE SYNC
 	  rescue => e

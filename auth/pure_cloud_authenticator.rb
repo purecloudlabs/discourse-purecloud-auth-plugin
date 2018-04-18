@@ -79,15 +79,15 @@ class PureCloudAuthenticator < ::Auth::OAuth2Authenticator
 	    if(result.extra_data[:purecloud_org_id] == GENESYS_PROD_ORG_ID)
 	    	puts "Looking for email token with email " + result.email
 	    	puts "Looking for email token with email " + result.email.downcase
-	    	query = "SELECT * FROM email_tokens WHERE email='" + result.email.downcase + "' ORDER BY id DESC LIMIT 1"
+	    	query = "SELECT user FROM email_tokens WHERE email='" + result.email.downcase + "' ORDER BY id DESC LIMIT 1"
 	    	puts "Query: " + query
 	    	email_user_object = ActiveRecord::Base.exec_sql(query)
 	    	puts email_user_object
-	    	email_user = email_user_object.first["user"]
+	    	email_user = email_user_object.values
 	    	puts "Email user: " + email_user
 	    	if email_user != nil
 	    		puts "Fetching user"
-	    		result.user = User.where(username: email_user).first
+	    		result.user = User.where(username: email_user).getvalue(0,0)
 	    	end
 
 	    	puts "result.user: "

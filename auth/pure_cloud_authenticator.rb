@@ -83,11 +83,9 @@ class PureCloudAuthenticator < ::Auth::OAuth2Authenticator
 	    	puts "Query: " + query
 	    	email_user_object = ActiveRecord::Base.exec_sql(query)
 	    	puts email_user_object
-	    	email_user = email_user_object.values
-	    	puts "Email user: " + email_user
-	    	if email_user != nil
+	    	if email_user_object != nil
 	    		puts "Fetching user"
-	    		result.user = User.where(username: email_user).getvalue(0,0)
+	    		result.user = User.where(username: email_user_object.getvalue(0,0))
 	    	end
 
 	    	puts "result.user: "

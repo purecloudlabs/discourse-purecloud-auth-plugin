@@ -82,9 +82,9 @@ class PureCloudAuthenticator < ::Auth::OAuth2Authenticator
 	    	query = "SELECT user FROM email_tokens WHERE email='" + result.email.downcase + "' ORDER BY id DESC LIMIT 1"
 	    	puts "Query: " + query
 	    	email_user_object = ActiveRecord::Base.exec_sql(query)
-	    	puts email_user_object
 	    	if email_user_object != nil
 	    		puts "Fetching user"
+	    		puts email_user_object.getvalue(0,0)
 	    		result.user = User.where(username: email_user_object.getvalue(0,0)).first
 	    	end
 

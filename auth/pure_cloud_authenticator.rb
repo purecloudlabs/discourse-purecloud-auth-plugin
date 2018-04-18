@@ -82,7 +82,12 @@ class PureCloudAuthenticator < ::Auth::OAuth2Authenticator
 	    	if email_user_id != nil
 	    		puts "Fetching user"
 	    		result.user = User.where(id: email_user_id).first
+	    		puts User.where(id: email_user_id)
+	    		puts User.where(id: email_user_id).first
 	    	end
+
+	    	puts "result.user: "
+	    	puts result.user
 
 	    	if result.user != nil
 	    		puts "User found, email_valid=true"

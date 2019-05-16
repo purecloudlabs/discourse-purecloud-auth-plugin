@@ -1,6 +1,6 @@
 # name: purecloud-auth
 # about: PureCloud login support for Discourse
-# version: 0.1
+# version: 0.2
 # authors: Kevin Glinski
 require_relative 'auth/pure_cloud_authenticator'
 require_relative 'auth/pure_cloud_apne1_authenticator'

@@ -4,7 +4,7 @@ require_dependency 'auth/oauth2_authenticator.rb'
 class GenesysCloudCac1Authenticator < GenesysCloudAuthenticator
   def init_settings
       @region = "cac1.pure.cloud"
-      @provider_name = "genesys_cloud_cac1"
+      @provider_name = "cac1"
       puts "Initializing Genesys Cloud OAuth settings"
       puts "Provider: " + @provider_name
       puts "Region: " + @region

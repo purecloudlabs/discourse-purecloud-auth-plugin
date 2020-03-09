@@ -4,12 +4,12 @@ GENESYS_PROD_ORG_ID = "845c9858-a978-4313-b8ed-2a85b289cffb"
 
 #https://github.com/discourse/discourse-oauth2-basic
 class GenesysCloudAuthenticator < ::Auth::OAuth2Authenticator
-  @provider_name = "genesys_cloud_use1"
+  @provider_name = "use1"
   @region = "mypurecloud.com"
 
   def init_settings
       @region = "mypurecloud.com"
-      @provider_name = "genesys_cloud_use1"
+      @provider_name = "use1"
       puts "Initializing Genesys Cloud OAuth settings"
       puts "Provider: " + @provider_name
       puts "Region: " + @region

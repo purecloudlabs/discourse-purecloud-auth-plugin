@@ -4,7 +4,7 @@ require_dependency 'auth/oauth2_authenticator.rb'
 class GenesysCloudUsw2Authenticator < GenesysCloudAuthenticator
   def init_settings
       @region = "usw2.pure.cloud"
-      @provider_name = "genesys_cloud_usw2"
+      @provider_name = "usw2"
       puts "Initializing Genesys Cloud OAuth settings"
       puts "Provider: " + @provider_name
       puts "Region: " + @region

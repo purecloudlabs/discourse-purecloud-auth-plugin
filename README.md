@@ -1,3 +1,3 @@
-# Discourse PureCloud Auth Plugin
+# Discourse Genesys Cloud Auth Plugin
 
-This is a plugin for Discourse to provide authentication via PureCloud.
+This is a plugin for Discourse to provide authentication via Genesys Cloud.

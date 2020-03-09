@@ -1,22 +1,6 @@
-purecloud_auth:
-  purecloud_use1_client_id:
+genesyscloud_auth:
+  genesys_cloud_client_id:
       default: ''
-  purecloud_use1_client_secret:
-      default: ''
-  purecloud_apse1_client_id:
-      default: ''
-  purecloud_apse1_client_secret:
-      default: ''
-  purecloud_apne1_client_id:
-      default: ''
-  purecloud_apne1_client_secret:
-      default: ''
-  purecloud_euw1_client_id:
-      default: ''
-  purecloud_euw1_client_secret:
-      default: ''
-  purecloud_euc1_client_id:
-      default: ''
-  purecloud_euc1_client_secret:
+  genesys_cloud_client_secret:
       default: ''
  

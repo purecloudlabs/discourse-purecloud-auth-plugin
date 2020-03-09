@@ -3,4 +3,4 @@ en:
     admin:
       site_settings:
         categories:
-          purecloud_auth: 'PureCloud Auth'
+          genesyscloud_auth: 'Genesys Cloud Auth'

@@ -1,7 +1,9 @@
-# name: genesyscloud-auth
-# about: Genesys Cloud login support for Discourse
-# version: 0.2
+# name: Genesys Cloud OAuth
+# about: Log in to Discourse using Genesys Cloud authentication
+# version: 0.3
 # authors: Genesys
+# url: https://github.com/purecloudlabs/discourse-purecloud-auth-plugin
+
 require_relative 'auth/genesys_cloud_authenticator'
 require_relative 'auth/genesys_cloud_usw2_authenticator'
 require_relative 'auth/genesys_cloud_cac1_authenticator'

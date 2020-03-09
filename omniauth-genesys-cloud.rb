@@ -3,7 +3,7 @@ require "omniauth/strategies/oauth2"
 module OmniAuth
   module Strategies
     class GenesysCloud < OmniAuth::Strategies::OAuth2
-      option :name, :genesyscloud
+      option :name, :genesysCloud
 
       option :client_options, {
           authorize_url: '/oauth/authorize',

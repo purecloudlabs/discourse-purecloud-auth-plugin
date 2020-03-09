@@ -1,4 +1,4 @@
-genesyscloud_auth:
+genesys_cloud_auth:
   genesys_cloud_client_id:
       default: ''
   genesys_cloud_client_secret:

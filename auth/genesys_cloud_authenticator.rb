@@ -18,7 +18,7 @@ class GenesysCloudAuthenticator < ::Auth::OAuth2Authenticator
   def register_middleware(omniauth)
   	init_settings
 
-    omniauth.provider :genesyscloud,
+    omniauth.provider :genesysCloud,
                       name: @provider_name,
                       setup: lambda {|env|
                       	puts "Registering middleware for Genesys Cloud OAuth provider: " + @provider_name

@@ -12,7 +12,7 @@ require_relative 'auth/genesys_cloud_apne1_authenticator'
 require_relative 'auth/genesys_cloud_apne2_authenticator'
 require_relative 'auth/genesys_cloud_apse1_authenticator'
 
-require_relative 'omniauth-genesyscloud'
+require_relative 'omniauth-genesys-cloud'
 
 #puts can be found on the docker container in /var/www/discourse/log/unicorn.stdout.log
 puts 'Genesys Cloud - plugin loaded'

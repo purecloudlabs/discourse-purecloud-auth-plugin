@@ -3,14 +3,14 @@ require_dependency 'auth/oauth2_authenticator.rb'
 GENESYS_PROD_ORG_ID = "845c9858-a978-4313-b8ed-2a85b289cffb"
 
 #https://github.com/discourse/discourse-oauth2-basic
-class GenesysCloudAuthenticator < ::Auth::OAuth2Authenticator
-  @provider_name = "use1"
+class PureCloudAuthenticator < ::Auth::OAuth2Authenticator
+  @provider_name = "purecloud_use1"
   @region = "mypurecloud.com"
 
   def init_settings
       @region = "mypurecloud.com"
-      @provider_name = "use1"
-      puts "Initializing Genesys Cloud OAuth settings"
+      @provider_name = "purecloud_use1"
+      puts "Initializing PureCloud OAuth settings"
       puts "Provider: " + @provider_name
       puts "Region: " + @region
   end
@@ -18,15 +18,15 @@ class GenesysCloudAuthenticator < ::Auth::OAuth2Authenticator
   def register_middleware(omniauth)
   	init_settings
 
-    omniauth.provider :genesysCloud,
+    omniauth.provider :purecloud,
                       name: @provider_name,
                       setup: lambda {|env|
-                      	puts "Registering middleware for Genesys Cloud OAuth provider: " + @provider_name
-                      	puts "Client ID: " + SiteSetting.genesys_cloud_client_id
+                      	puts "Registering middleware for PureCloud OAuth provider: " + @provider_name
+                      	puts "Client ID: " + SiteSetting.purecloud_use1_client_id
 
                         opts = env['omniauth.strategy'].options
-                        opts[:client_id] = SiteSetting.genesys_cloud_client_id
-                        opts[:client_secret] = SiteSetting.genesys_cloud_client_secret
+                        opts[:client_id] = SiteSetting.purecloud_use1_client_id
+                        opts[:client_secret] = SiteSetting.purecloud_use1_client_secret
 
                         opts[:client_options] = {
                           site: "https://login.#{@region}/"
@@ -61,7 +61,7 @@ class GenesysCloudAuthenticator < ::Auth::OAuth2Authenticator
 	    result.username = user_details[:username]
 	    result.email = user_details[:email]
 
-	    # Genesys Cloud doesn't have a concept of a validated email
+	    #purecloud doesn't have a concept of a validated email
 	    result.email_valid = false
 
 	    current_info = ::PluginStore.get(@provider_name, "#{@provider_name}_user_#{user_details[:user_id]}")

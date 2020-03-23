@@ -1,4 +1,12 @@
 en:
   site_settings:
-    genesys_cloud_client_id: "OAuth Client ID"
-    genesys_cloud_client_secret: "OAuth Client Secret"
+    purecloud_use1_client_id: "[USE1] OAuth Client ID"
+    purecloud_use1_client_secret: "[USE1] OAuth Client Secret"
+    purecloud_apse1_client_id: "[APSE1] OAuth Client ID"
+    purecloud_apse1_client_secret: "[APSE1] OAuth Client Secret"
+    purecloud_apne1_client_id: "[APNE1] OAuth Client ID"
+    purecloud_apne1_client_secret: "[APNE1] OAuth Client Secret"
+    purecloud_euw1_client_id: "[EUW1] OAuth Client ID"
+    purecloud_euw1_client_secret: "[EUW1] OAuth Client Secret"
+    purecloud_euc1_client_id: "[EUC1] OAuth Client ID"
+    purecloud_euc1_client_secret: "[EUC1] OAuth Client Secret"

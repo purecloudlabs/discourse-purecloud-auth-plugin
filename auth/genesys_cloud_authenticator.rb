@@ -9,7 +9,7 @@ class GenesysCloudAuthenticator < ::Auth::OAuth2Authenticator
 
   def enabled?
     true
-  end 
+  end
 
   def init_settings
       @region = "mypurecloud.com"

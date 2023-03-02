@@ -1,10 +1,10 @@
 # require_dependency 'auth/oauth2_authenticator.rb'
 
 #https://github.com/discourse/discourse-oauth2-basic
-class GenesysCloudApne2Authenticator < GenesysCloudAuthenticator
+class GenesysCloudUse2Authenticator < GenesysCloudAuthenticator
   def init_settings
-      @region = "apne2.pure.cloud"
-      @provider_name = "apne2"
+      @region = "use2.us-gov-pure.cloud"
+      @provider_name = "use2"
       puts "Initializing Genesys Cloud OAuth settings"
       puts "Provider: " + @provider_name
       puts "Region: " + @region

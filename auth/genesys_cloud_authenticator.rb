@@ -1,4 +1,4 @@
-require_dependency 'auth/oauth2_authenticator.rb'
+# require_dependency 'auth/oauth2_authenticator.rb'
 
 GENESYS_PROD_ORG_ID = "845c9858-a978-4313-b8ed-2a85b289cffb"
 

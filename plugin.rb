@@ -1,6 +1,6 @@
 # name: Genesys Cloud OAuth
 # about: Log in to Discourse using Genesys Cloud authentication
-# version: 0.4
+# version: 0.5
 # authors: Genesys
 # url: https://github.com/purecloudlabs/discourse-purecloud-auth-plugin
 
@@ -74,9 +74,27 @@ auth_provider :title => 'Sign in with Genesys Cloud APAC Northeast (Seoul) (apne
             :frame_height => FRAME_HEIGHT
 
 auth_provider :title => 'Sign in with Genesys Cloud APAC South (mypurecloud.com.au)',
-            :authenticator => GenesysCloudApse1Authenticator.new('apse1'),
+            :authenticator => GenesysCloudApse2Authenticator.new('apse1'),
             :message => LOGIN_MESSAGE,
             :frame_width => FRAME_WIDTH,
             :frame_height => FRAME_HEIGHT
+
+auth_provider :title => 'Sign in with Genesys Cloud Asia Pacific South (Mumbai) (aps1.pure.cloud)',
+            :authenticator => GenesysCloudAps1Authenticator.new('aps1'),
+            :message => LOGIN_MESSAGE,
+            :frame_width => FRAME_WIDTH,
+            :frame_height => FRAME_HEIGHT   
+            
+auth_provider :title => 'Sign in with Genesys Cloud South America (São Paulo) (sae1.pure.cloud)',
+            :authenticator => GenesysCloudSae1Authenticator.new('sae1'),
+            :message => LOGIN_MESSAGE,
+            :frame_width => FRAME_WIDTH,
+            :frame_height => FRAME_HEIGHT
+            
+auth_provider :title => 'Sign in with Genesys Cloud US East (Ohio) (use2.us-gov-pure.cloud)',
+            :authenticator => GenesysCloudAUse2Authenticator.new('use2'),
+            :message => LOGIN_MESSAGE,
+            :frame_width => FRAME_WIDTH,
+            :frame_height => FRAME_HEIGHT            
 
 puts 'Genesys Cloud - plugin startup complete'

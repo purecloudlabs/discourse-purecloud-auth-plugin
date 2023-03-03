@@ -7,6 +7,10 @@ class GenesysCloudAuthenticator < Auth::ManagedAuthenticator
   @provider_name = "use1"
   @region = "mypurecloud.com"
 
+  def name
+    "oauth2_basic"
+  end
+
   def enabled?
     true
   end

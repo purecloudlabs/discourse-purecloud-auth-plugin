@@ -95,7 +95,7 @@ auth_provider :title => 'Sign in with Genesys Cloud South America (São Paulo) (
             :frame_height => FRAME_HEIGHT
             
 auth_provider :title => 'Sign in with Genesys Cloud US East (Ohio) (use2.us-gov-pure.cloud)',
-            :authenticator => GenesysCloudAUse2Authenticator.new,
+            :authenticator => GenesysCloudUse2Authenticator.new,
             :message => LOGIN_MESSAGE,
             :frame_width => FRAME_WIDTH,
             :frame_height => FRAME_HEIGHT            

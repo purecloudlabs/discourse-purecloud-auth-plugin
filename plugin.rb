@@ -23,16 +23,10 @@ require_relative 'omniauth-genesys-cloud'
 puts 'Genesys Cloud - plugin loaded'
 
 FRAME_WIDTH = 600
-FRAME_HEIGHT = 600
+FRAME_HEIGHT = 543
 LOGIN_MESSAGE = 'Authorizing with Genesys Cloud (make sure pop up blockers are not enabled)'
 
 puts 'Genesys Cloud - Registering AuthProviders'
-
-auth_provider :title => 'Sign in with Genesys Cloud US East (mypurecloud.com)',
-            :authenticator => GenesysCloudAuthenticator.new,
-            :message => LOGIN_MESSAGE,
-            :frame_width => FRAME_WIDTH,
-            :frame_height => FRAME_HEIGHT
 
 auth_provider :title => 'Sign in with Genesys Cloud US West (usw2.pure.cloud)',
             :authenticator => GenesysCloudUsw2Authenticator.new,
@@ -45,6 +39,12 @@ auth_provider :title => 'Sign in with Genesys Cloud Canada (cac1.pure.cloud)',
             :message => LOGIN_MESSAGE,
             :frame_width => FRAME_WIDTH,
             :frame_height => FRAME_HEIGHT
+
+auth_provider :title => 'Sign in with Genesys Cloud US East (mypurecloud.com)',
+            :authenticator => GenesysCloudAuthenticator.new,
+            :message => LOGIN_MESSAGE,
+            :frame_width => FRAME_WIDTH,
+            :frame_height => FRAME_HEIGHT            
 
 auth_provider :title => 'Sign in with Genesys Cloud EU West (Ireland) (mypurecloud.ie)',
             :authenticator => GenesysCloudEuw1Authenticator.new,

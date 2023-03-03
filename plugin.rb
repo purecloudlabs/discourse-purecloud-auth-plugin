@@ -29,73 +29,73 @@ LOGIN_MESSAGE = 'Authorizing with Genesys Cloud (make sure pop up blockers are n
 puts 'Genesys Cloud - Registering AuthProviders'
 
 auth_provider :title => 'Sign in with Genesys Cloud US East (mypurecloud.com)',
-            :authenticator => GenesysCloudAuthenticator.new('use1'),
+            :authenticator => GenesysCloudAuthenticator.new,
             :message => LOGIN_MESSAGE,
             :frame_width => FRAME_WIDTH,
             :frame_height => FRAME_HEIGHT
 
 auth_provider :title => 'Sign in with Genesys Cloud US West (usw2.pure.cloud)',
-            :authenticator => GenesysCloudUsw2Authenticator.new('usw2'),
+            :authenticator => GenesysCloudUsw2Authenticator.new,
             :message => LOGIN_MESSAGE,
             :frame_width => FRAME_WIDTH,
             :frame_height => FRAME_HEIGHT
 
 auth_provider :title => 'Sign in with Genesys Cloud Canada (cac1.pure.cloud)',
-            :authenticator => GenesysCloudCac1Authenticator.new('cac1'),
+            :authenticator => GenesysCloudCac1Authenticator.new,
             :message => LOGIN_MESSAGE,
             :frame_width => FRAME_WIDTH,
             :frame_height => FRAME_HEIGHT
 
 auth_provider :title => 'Sign in with Genesys Cloud EU West (Ireland) (mypurecloud.ie)',
-            :authenticator => GenesysCloudEuw1Authenticator.new('euw1'),
+            :authenticator => GenesysCloudEuw1Authenticator.new,
             :message => LOGIN_MESSAGE,
             :frame_width => FRAME_WIDTH,
             :frame_height => FRAME_HEIGHT
 
 auth_provider :title => 'Sign in with Genesys Cloud EU West (London) (euw2.pure.cloud)',
-            :authenticator => GenesysCloudEuw2Authenticator.new('euw2'),
+            :authenticator => GenesysCloudEuw2Authenticator.new,
             :message => LOGIN_MESSAGE,
             :frame_width => FRAME_WIDTH,
             :frame_height => FRAME_HEIGHT
 
 auth_provider :title => 'Sign in with Genesys Cloud EU Central (mypurecloud.de)',
-            :authenticator => GenesysCloudEuc1Authenticator.new('euc1'),
+            :authenticator => GenesysCloudEuc1Authenticator.new,
             :message => LOGIN_MESSAGE,
             :frame_width => FRAME_WIDTH,
             :frame_height => FRAME_HEIGHT
 
 auth_provider :title => 'Sign in with Genesys Cloud APAC Northeast (Tokyo) (mypurecloud.jp)',
-            :authenticator => GenesysCloudApne1Authenticator.new('apne1'),
+            :authenticator => GenesysCloudApne1Authenticator.new,
             :message => LOGIN_MESSAGE,
             :frame_width => FRAME_WIDTH,
             :frame_height => FRAME_HEIGHT
 
 auth_provider :title => 'Sign in with Genesys Cloud APAC Northeast (Seoul) (apne2.pure.cloud)',
-            :authenticator => GenesysCloudApne2Authenticator.new('apne2'),
+            :authenticator => GenesysCloudApne2Authenticator.new,
             :message => LOGIN_MESSAGE,
             :frame_width => FRAME_WIDTH,
             :frame_height => FRAME_HEIGHT
 
 auth_provider :title => 'Sign in with Genesys Cloud APAC South (mypurecloud.com.au)',
-            :authenticator => GenesysCloudApse2Authenticator.new('apse1'),
+            :authenticator => GenesysCloudApse2Authenticator.new,
             :message => LOGIN_MESSAGE,
             :frame_width => FRAME_WIDTH,
             :frame_height => FRAME_HEIGHT
 
 auth_provider :title => 'Sign in with Genesys Cloud Asia Pacific South (Mumbai) (aps1.pure.cloud)',
-            :authenticator => GenesysCloudAps1Authenticator.new('aps1'),
+            :authenticator => GenesysCloudAps1Authenticator.new,
             :message => LOGIN_MESSAGE,
             :frame_width => FRAME_WIDTH,
             :frame_height => FRAME_HEIGHT   
             
 auth_provider :title => 'Sign in with Genesys Cloud South America (São Paulo) (sae1.pure.cloud)',
-            :authenticator => GenesysCloudSae1Authenticator.new('sae1'),
+            :authenticator => GenesysCloudSae1Authenticator.new,
             :message => LOGIN_MESSAGE,
             :frame_width => FRAME_WIDTH,
             :frame_height => FRAME_HEIGHT
             
 auth_provider :title => 'Sign in with Genesys Cloud US East (Ohio) (use2.us-gov-pure.cloud)',
-            :authenticator => GenesysCloudAUse2Authenticator.new('use2'),
+            :authenticator => GenesysCloudAUse2Authenticator.new,
             :message => LOGIN_MESSAGE,
             :frame_width => FRAME_WIDTH,
             :frame_height => FRAME_HEIGHT            

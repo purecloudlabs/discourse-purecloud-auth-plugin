@@ -38,13 +38,7 @@ auth_provider :title => 'Sign in with Genesys Cloud Canada (cac1.pure.cloud)',
             :authenticator => GenesysCloudCac1Authenticator.new,
             :message => LOGIN_MESSAGE,
             :frame_width => FRAME_WIDTH,
-            :frame_height => FRAME_HEIGHT
-
-auth_provider :title => 'Sign in with Genesys Cloud US East (mypurecloud.com)',
-            :authenticator => GenesysCloudAuthenticator.new,
-            :message => LOGIN_MESSAGE,
-            :frame_width => FRAME_WIDTH,
-            :frame_height => FRAME_HEIGHT            
+            :frame_height => FRAME_HEIGHT           
 
 auth_provider :title => 'Sign in with Genesys Cloud EU West (Ireland) (mypurecloud.ie)',
             :authenticator => GenesysCloudEuw1Authenticator.new,
@@ -93,6 +87,12 @@ auth_provider :title => 'Sign in with Genesys Cloud South America (São Paulo) (
             :message => LOGIN_MESSAGE,
             :frame_width => FRAME_WIDTH,
             :frame_height => FRAME_HEIGHT
+
+auth_provider :title => 'Sign in with Genesys Cloud US East (mypurecloud.com)',
+            :authenticator => GenesysCloudAuthenticator.new,
+            :message => LOGIN_MESSAGE,
+            :frame_width => FRAME_WIDTH,
+            :frame_height => FRAME_HEIGHT 
             
 auth_provider :title => 'Sign in with Genesys Cloud US East (Ohio) (use2.us-gov-pure.cloud)',
             :authenticator => GenesysCloudUse2Authenticator.new,

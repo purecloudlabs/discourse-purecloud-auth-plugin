@@ -27,7 +27,7 @@ class GenesysCloudAuthenticator < Auth::ManagedAuthenticator
   	init_settings
 
     omniauth.provider :genesysCloud,
-                      name: @provider_name,
+                      name: :use1,
                       setup: lambda {|env|
                       	puts "Registering middleware for Genesys Cloud OAuth provider: " + @provider_name
                       	puts "Client ID: " + SiteSetting.genesys_cloud_client_id
@@ -37,10 +37,11 @@ class GenesysCloudAuthenticator < Auth::ManagedAuthenticator
                         opts[:client_secret] = SiteSetting.genesys_cloud_client_secret
 
                         opts[:client_options] = {
-                          authorize_url: "https://login.#{@region}/oauth/authorize",
-                          token_url: "https://login.#{@region}/oauth/token"
+                          authorize_url: "https://login.mypurecloud.com/oauth/authorize",
+                          token_url: "https://login..mypurecloud.com/oauth/token",
+                          token_method: :post
                         }
-
+                        opts[:client_options][:auth_scheme] = :basic_auth
                         opts[:authorize_options] = [:scope]
                       }
   end

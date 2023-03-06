@@ -37,7 +37,7 @@ class GenesysCloudAuthenticator < Auth::ManagedAuthenticator
                         opts[:client_secret] = SiteSetting.genesys_cloud_client_secret
 
                         opts[:client_options] = {
-                          authorize_url: "https://login.#{@region}/oauth/authorize"
+                          authorize_url: "https://login.#{@region}/oauth/authorize",
                           token_url: "https://login.#{@region}/oauth/token"
                         }
 

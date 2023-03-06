@@ -7,7 +7,7 @@ module OmniAuth
 
       option :client_options, {
           authorize_url: '/oauth/authorize',
-          token_url:     '/oauth/token'
+          token_url:     '/oauth/token',
           site: 'https://login.mypurecloud.com'
       }
 

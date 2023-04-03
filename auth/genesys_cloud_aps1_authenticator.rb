@@ -1,5 +1,3 @@
-# require_dependency 'auth/oauth2_authenticator.rb'
-
 #https://github.com/discourse/discourse-oauth2-basic
 class GenesysCloudAps1Authenticator < GenesysCloudAuthenticator
   def init_settings

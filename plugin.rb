@@ -6,13 +6,16 @@
 
 require_relative 'auth/genesys_cloud_authenticator'
 require_relative 'auth/genesys_cloud_usw2_authenticator'
+require_relative 'auth/genesys_cloud_use2_authenticator'
 require_relative 'auth/genesys_cloud_cac1_authenticator'
 require_relative 'auth/genesys_cloud_euw1_authenticator'
 require_relative 'auth/genesys_cloud_euw2_authenticator'
 require_relative 'auth/genesys_cloud_euc1_authenticator'
+require_relative 'auth/genesys_cloud_aps1_authenticator'
 require_relative 'auth/genesys_cloud_apne1_authenticator'
 require_relative 'auth/genesys_cloud_apne2_authenticator'
-require_relative 'auth/genesys_cloud_apse1_authenticator'
+require_relative 'auth/genesys_cloud_apse2_authenticator'
+require_relative 'auth/genesys_cloud_sae1_authenticator'
 
 require_relative 'omniauth-genesys-cloud'
 
@@ -30,6 +33,12 @@ auth_provider :title => 'Sign in with Genesys Cloud US East (mypurecloud.com)',
             :message => LOGIN_MESSAGE,
             :frame_width => FRAME_WIDTH,
             :frame_height => FRAME_HEIGHT
+
+auth_provider :title => 'Sign in with Genesys Cloud US East (Ohio) (use2.us-gov-pure.cloud)',
+            :authenticator => GenesysCloudUse2Authenticator.new('use2'),
+            :message => LOGIN_MESSAGE,
+            :frame_width => FRAME_WIDTH,
+            :frame_height => FRAME_HEIGHT               
 
 auth_provider :title => 'Sign in with Genesys Cloud US West (usw2.pure.cloud)',
             :authenticator => GenesysCloudUsw2Authenticator.new('usw2'),
@@ -61,6 +70,12 @@ auth_provider :title => 'Sign in with Genesys Cloud EU Central (mypurecloud.de)'
             :frame_width => FRAME_WIDTH,
             :frame_height => FRAME_HEIGHT
 
+auth_provider :title => 'Sign in with Genesys Cloud APAC (Mumbai) (aps1.pure.cloud)',
+            :authenticator => GenesysCloudAps1Authenticator.new('aps1'),
+            :message => LOGIN_MESSAGE,
+            :frame_width => FRAME_WIDTH,
+            :frame_height => FRAME_HEIGHT
+
 auth_provider :title => 'Sign in with Genesys Cloud APAC Northeast (Tokyo) (mypurecloud.jp)',
             :authenticator => GenesysCloudApne1Authenticator.new('apne1'),
             :message => LOGIN_MESSAGE,
@@ -73,8 +88,14 @@ auth_provider :title => 'Sign in with Genesys Cloud APAC Northeast (Seoul) (apne
             :frame_width => FRAME_WIDTH,
             :frame_height => FRAME_HEIGHT
 
-auth_provider :title => 'Sign in with Genesys Cloud APAC South (mypurecloud.com.au)',
-            :authenticator => GenesysCloudApse1Authenticator.new('apse1'),
+auth_provider :title => 'Sign in with Genesys Cloud APAC (Sydney) (mypurecloud.com.au)',
+            :authenticator => GenesysCloudApse2Authenticator.new('apse2'),
+            :message => LOGIN_MESSAGE,
+            :frame_width => FRAME_WIDTH,
+            :frame_height => FRAME_HEIGHT
+
+auth_provider :title => 'Sign in with Genesys Cloud South America (São Paulo) (sae1.pure.cloud)',
+            :authenticator => GenesysCloudSae1Authenticator.new('sae1'),
             :message => LOGIN_MESSAGE,
             :frame_width => FRAME_WIDTH,
             :frame_height => FRAME_HEIGHT

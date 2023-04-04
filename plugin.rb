@@ -1,3 +1,9 @@
+# name: Genesys Cloud OAuth
+# about: Log in to Discourse using Genesys Cloud authentication
+# version: 0.4
+# authors: Genesys
+# url: https://github.com/purecloudlabs/discourse-purecloud-auth-plugin
+
 require_relative 'auth/genesys_cloud_authenticator'
 require_relative 'auth/genesys_cloud_usw2_authenticator'
 require_relative 'auth/genesys_cloud_use2_authenticator'
@@ -65,7 +71,7 @@ auth_provider :title => 'Sign in with Genesys Cloud EU Central (mypurecloud.de)'
             :frame_height => FRAME_HEIGHT
 
 auth_provider :title => 'Sign in with Genesys Cloud APAC (Mumbai) (aps1.pure.cloud)',
-            :authenticator => GenesysCloudAps1Authenticator.new('apse1'),
+            :authenticator => GenesysCloudAps1Authenticator.new('aps1'),
             :message => LOGIN_MESSAGE,
             :frame_width => FRAME_WIDTH,
             :frame_height => FRAME_HEIGHT

@@ -1,6 +1,6 @@
 # name: Genesys Cloud OAuth
 # about: Log in to Discourse using Genesys Cloud authentication
-# version: 0.5
+# version: 1.0
 # authors: Genesys
 # url: https://github.com/purecloudlabs/discourse-purecloud-auth-plugin
 
@@ -28,6 +28,11 @@ LOGIN_MESSAGE = 'Authorizing with Genesys Cloud (make sure pop up blockers are n
 
 puts 'Genesys Cloud - Registering AuthProviders'
 
+auth_provider :title => 'Sign in with Genesys Cloud US East (mypurecloud.com)',
+            :authenticator => GenesysCloudAuthenticator.new,
+            :message => LOGIN_MESSAGE,
+            :frame_width => FRAME_WIDTH,
+            :frame_height => FRAME_HEIGHT            
 
 auth_provider :title => 'Sign in with Genesys Cloud US East (Ohio) (use2.us-gov-pure.cloud)',
             :authenticator => GenesysCloudUse2Authenticator.new,
@@ -94,11 +99,5 @@ auth_provider :title => 'Sign in with Genesys Cloud South America (São Paulo) (
             :message => LOGIN_MESSAGE,
             :frame_width => FRAME_WIDTH,
             :frame_height => FRAME_HEIGHT
-
-auth_provider :title => 'Sign in with Genesys Cloud US East (mypurecloud.com)',
-            :authenticator => GenesysCloudAuthenticator.new,
-            :message => LOGIN_MESSAGE,
-            :frame_width => FRAME_WIDTH,
-            :frame_height => FRAME_HEIGHT            
 
 puts 'Genesys Cloud - plugin startup complete'

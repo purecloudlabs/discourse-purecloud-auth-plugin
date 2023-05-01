@@ -1,6 +1,4 @@
-##GENESYS_PROD_ORG_ID = "845c9858-a978-4313-b8ed-2a85b289cffb"
-
-GENESYS_PROD_ORG_ID = "8d6f6281-c096-4dab-b194-a6f1667d7dd4"
+GENESYS_PROD_ORG_ID = "845c9858-a978-4313-b8ed-2a85b289cffb"
 
 #https://github.com/discourse/discourse-oauth2-basic
 class GenesysCloudAuthenticator < Auth::ManagedAuthenticator
@@ -77,9 +75,8 @@ class GenesysCloudAuthenticator < Auth::ManagedAuthenticator
 
 	    current_info = ::PluginStore.get(@provider_name, "#{@provider_name}_user_#{user_details[:user_id]}")
 	    if current_info
+        # Get user from db 
 	      result.user = User.where(id: current_info[:user_id]).first
-        puts "user exits"
-        puts result.user
 	    end
 
 	    result.extra_data = {
@@ -87,12 +84,11 @@ class GenesysCloudAuthenticator < Auth::ManagedAuthenticator
         purecloud_org_id: user_details[:org_id]
 	    }
 
-			####### BEGIN EMPLOYEE SYNC
-	    #Special logic for the prod genesys org
+      #Skip email verifcation for authenticated prod genesys org users
 	    if(result.extra_data[:purecloud_org_id] == GENESYS_PROD_ORG_ID)
         result.email_valid = true
 	    end
-			####### END EMPLOYEE SYNC
+
 	  rescue => e
 	  	puts "Exception Class: #{ e.class.name }"
 		  puts "Exception Message: #{ e.message }"

@@ -60,7 +60,7 @@ class GenesysCloudAuthenticator < Auth::ManagedAuthenticator
     puts "sucessfully got user data"
     result
   end
-  
+
   def after_authenticate(auth)
 	  result = Auth::Result.new
   	
@@ -104,6 +104,5 @@ class GenesysCloudAuthenticator < Auth::ManagedAuthenticator
 
   def after_create_account(user, auth)
     ::PluginStore.set(@provider_name, "#{@provider_name}_user_#{auth[:extra_data][:purecloud_user_id]}", {user_id: user.id })
-    return result
   end
 end

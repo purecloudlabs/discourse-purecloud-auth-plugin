@@ -1,30 +1,32 @@
-require_dependency 'auth/oauth2_authenticator.rb'
+##GENESYS_PROD_ORG_ID = "845c9858-a978-4313-b8ed-2a85b289cffb"
 
-GENESYS_PROD_ORG_ID = "845c9858-a978-4313-b8ed-2a85b289cffb"
+GENESYS_PROD_ORG_ID = "8d6f6281-c096-4dab-b194-a6f1667d7dd4"
 
 #https://github.com/discourse/discourse-oauth2-basic
-class GenesysCloudAuthenticator < ::Auth::OAuth2Authenticator
-  @provider_name = "use1"
-  @region = "mypurecloud.com"
+class GenesysCloudAuthenticator < Auth::ManagedAuthenticator
+  def init_settings
+    @region = "mypurecloud.com"
+    @provider_name = "use1"
+    puts "Initializing Genesys Cloud OAuth settings"
+    puts "Provider: " + @provider_name
+    puts "Region: " + @region
+  end
+
+  def name
+   @provider_name
+  end
 
   def enabled?
     true
-  end
-
-  def init_settings
-      @region = "mypurecloud.com"
-      @provider_name = "use1"
-      puts "Initializing Genesys Cloud OAuth settings"
-      puts "Provider: " + @provider_name
-      puts "Region: " + @region
   end
 
   def register_middleware(omniauth)
   	init_settings
 
     omniauth.provider :genesysCloud,
-                      name: @provider_name,
-                      setup: lambda {|env|
+                      name: name,
+                      setup: 
+                      lambda {|env|
                       	puts "Registering middleware for Genesys Cloud OAuth provider: " + @provider_name
                       	puts "Client ID: " + SiteSetting.genesys_cloud_client_id
 
@@ -33,15 +35,20 @@ class GenesysCloudAuthenticator < ::Auth::OAuth2Authenticator
                         opts[:client_secret] = SiteSetting.genesys_cloud_client_secret
 
                         opts[:client_options] = {
-                          site: "https://login.#{@region}/"
+                          authorize_url: "https://login.#{@region}/oauth/authorize",
+                          token_url: "https://login.#{@region}/oauth/token"
                         }
                       }
   end
 
   def fetch_user_details(token)
     user_json_url = "https://api.#{@region}/api/v2/users/me?expand=organization"
-    user_json = JSON.parse(open(user_json_url, 'Authorization' => "Bearer #{token}" ).read)
-    puts user_json
+    bearer_token = "Bearer #{token}"
+    connection = Faraday.new { |f| f.adapter FinalDestination::FaradayAdapter }
+    headers = { "Authorization" => bearer_token, "Accept" => "application/json" }
+    user_json_response = connection.run_request(:get, user_json_url, nil, headers)
+
+    user_json = JSON.parse(user_json_response.body)
 
     result = {
       :name     => user_json['name'],
@@ -50,10 +57,10 @@ class GenesysCloudAuthenticator < ::Auth::OAuth2Authenticator
       :username => user_json["name"],
       :org_id => user_json["organization"]["id"]
     }
-
+    puts "sucessfully got user data"
     result
   end
-
+  
   def after_authenticate(auth)
 	  result = Auth::Result.new
   	
@@ -71,6 +78,8 @@ class GenesysCloudAuthenticator < ::Auth::OAuth2Authenticator
 	    current_info = ::PluginStore.get(@provider_name, "#{@provider_name}_user_#{user_details[:user_id]}")
 	    if current_info
 	      result.user = User.where(id: current_info[:user_id]).first
+        puts "user exits"
+        puts result.user
 	    end
 
 	    result.extra_data = {
@@ -81,16 +90,7 @@ class GenesysCloudAuthenticator < ::Auth::OAuth2Authenticator
 			####### BEGIN EMPLOYEE SYNC
 	    #Special logic for the prod genesys org
 	    if(result.extra_data[:purecloud_org_id] == GENESYS_PROD_ORG_ID)
-	    	query = "SELECT user_id FROM email_tokens WHERE email='" + result.email.downcase + "' ORDER BY id DESC LIMIT 1"
-	    	email_user_object = ActiveRecord::Base.exec_sql(query)
-
-	    	if email_user_object != nil
-	    		result.user = User.where(id: email_user_object.getvalue(0,0)).first
-	    	end
-
-	    	if result.user != nil
-	    		result.email_valid = true
-	    	end
+        result.email_valid = true
 	    end
 			####### END EMPLOYEE SYNC
 	  rescue => e
@@ -104,5 +104,6 @@ class GenesysCloudAuthenticator < ::Auth::OAuth2Authenticator
 
   def after_create_account(user, auth)
     ::PluginStore.set(@provider_name, "#{@provider_name}_user_#{auth[:extra_data][:purecloud_user_id]}", {user_id: user.id })
+    return result
   end
 end

@@ -59,9 +59,9 @@ class GenesysCloudAuthenticator < Auth::ManagedAuthenticator
     result
   end
 
-  def after_authenticate(auth)
+  def after_authenticate(auth,existing_account:nil)
 	  result = Auth::Result.new
-  	
+
   	begin
 	    token = auth['credentials']['token']
 	    user_details = fetch_user_details(token)
@@ -84,6 +84,12 @@ class GenesysCloudAuthenticator < Auth::ManagedAuthenticator
         purecloud_org_id: user_details[:org_id]
 	    }
 
+      #Link account with a different SSO provider
+      if existing_account 
+        result.user = existing_account
+        ::PluginStore.set(@provider_name, "#{@provider_name}_user_#{result.extra_data[:purecloud_user_id]}", {user_id: existing_account.id })
+      end
+  
       #Skip email verifcation for authenticated prod genesys org users
 	    if(result.extra_data[:purecloud_org_id] == GENESYS_PROD_ORG_ID)
         result.email_valid = true
@@ -99,6 +105,7 @@ class GenesysCloudAuthenticator < Auth::ManagedAuthenticator
   end
 
   def after_create_account(user, auth)
+    #Save user id
     ::PluginStore.set(@provider_name, "#{@provider_name}_user_#{auth[:extra_data][:purecloud_user_id]}", {user_id: user.id })
   end
 end
